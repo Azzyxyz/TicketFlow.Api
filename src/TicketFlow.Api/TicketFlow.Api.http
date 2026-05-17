@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:5091
+
+### Lista zgłoszeń
+GET {{baseUrl}}/api/tickets
+
+### Szczegóły zgłoszenia
+GET {{baseUrl}}/api/tickets/11111111-1111-1111-1111-111111111111
+
+### Dodanie zgłoszenia
+POST {{baseUrl}}/api/tickets
+Content-Type: application/json
+
+{
+  "title": "Nie działa logowanie",
+  "description": "Użytkownik nie może zalogować się do systemu po zmianie hasła.",
+  "customerId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "priority": "High",
+  "kind": "Incident"
+}
+
+### Przypisanie zgłoszenia do pracownika
+PUT {{baseUrl}}/api/tickets/11111111-1111-1111-1111-111111111111/assign
+Content-Type: application/json
+
+{
+  "agentId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+}
+
+### Zmiana statusu
+PUT {{baseUrl}}/api/tickets/11111111-1111-1111-1111-111111111111/status
+Content-Type: application/json
+
+{
+  "status": "Resolved"
+}
+
+### Metadane domeny przez refleksję
+GET {{baseUrl}}/api/metadata/domain
